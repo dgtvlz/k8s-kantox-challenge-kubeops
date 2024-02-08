@@ -7,7 +7,7 @@ const uniqueId = uuidv4();
 
 expressapp.get('/', function (req, res) {
     const message = {
-        message: 'Hello World JavaScript v2.1',
+        message: 'Hello World JavaScript v2.2',
         id: uniqueId
     };
     res.json(message);

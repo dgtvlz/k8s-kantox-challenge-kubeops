@@ -29,7 +29,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: ./src/hello-world
-          file: ./Dockerfile
+          file: ./src/hello-world/Dockerfile
           push: true
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/hello-world:${{ github.sha }}, ${{ secrets.DOCKERHUB_USERNAME }}/hello-world:latest
 
