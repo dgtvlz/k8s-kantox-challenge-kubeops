@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: hello-world
+spec:
+  destination:
+    name: 'in-cluster'
+    namespace: 'prod'
+  source:
+    path: 'chart'
+    repoURL: 'https://github.com/dgtvlz/k8s-kantox-challenge-kubeops'
+    targetRevision: HEAD
+    helm:
+      valueFiles:
+      - values.yaml
+  project: 'default'
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
