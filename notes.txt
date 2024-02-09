@@ -27,7 +27,11 @@ get password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
 
 login into argo.
-create app
-copy argocd/hello-world.yaml
+create stg app
+copy argocd/app_stg.yaml
+create
+sync
+create prd app
+copy argocd/app_prd.yaml
 create
 sync
