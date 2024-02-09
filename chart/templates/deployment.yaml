@@ -6,7 +6,7 @@ metadata:
     app: hello-world
   namespace: "{{ .Values.namespace }}"
 spec:
-  replicas: 2
+  replicas: "{{ .Values.replicas }}"
   minReadySeconds: 30
   selector:
     matchLabels:

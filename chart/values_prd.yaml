@@ -2,3 +2,4 @@ image:
   repository: dgtvlz/hello-world
   tag: 34d7a0ecd85d21b7036456819d4bd42adf3028fb
 namespace: prd
+replicas: 3
