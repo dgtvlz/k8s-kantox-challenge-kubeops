@@ -2,3 +2,4 @@ image:
   repository: dgtvlz/hello-world
   tag: b3190884383dc032120ea3bdc82b16736d79ee37
 namespace: stg
+replicas: 2
