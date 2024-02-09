@@ -69,7 +69,10 @@ This workflow ensures that the Docker image is built and pushed to Docker Hub up
   - Kubernetes: v1.28.3
   - Docker: 24.0.7
 - **Helm**: v3.14.0
+- **Kubectl**: v1.29.1
 - Docker hub account
+
+Solution was tested on the given versions. It may work with other versions too.
 
 ## Setup
 
