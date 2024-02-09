@@ -1,5 +1,5 @@
 image:
   repository: dgtvlz/hello-world
-  tag: 34d7a0ecd85d21b7036456819d4bd42adf3028fb
+  tag: 5a89f998e86bf86068598214d4d2c5c19486c7cb
 namespace: prd
 replicas: 3
