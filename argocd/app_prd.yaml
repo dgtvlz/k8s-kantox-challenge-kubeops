@@ -5,14 +5,14 @@ metadata:
 spec:
   destination:
     name: 'in-cluster'
-    namespace: 'prod'
+    namespace: 'prd'
   source:
     path: 'chart'
     repoURL: 'https://github.com/dgtvlz/k8s-kantox-challenge-kubeops'
     targetRevision: HEAD
     helm:
       valueFiles:
-      - values.yaml
+      - values_prd.yaml
   project: 'default'
   syncPolicy:
     syncOptions:

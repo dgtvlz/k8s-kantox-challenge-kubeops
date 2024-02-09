@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - stg
     paths:
       - 'src/hello-world/**'
 
@@ -43,13 +44,19 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Update Image Tag Values
+        if: github.ref == 'refs/heads/main' # Update values_prd.yaml on main branch
         run: |
           chart_dir="chart"
           new_image_tag=${{ github.sha }}
+          sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values_prd.yaml"
 
-          # Update the values.yaml file with the new image tag
-          sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values.yaml"
-    
+      - name: Update Image Tag Values for Staging
+        if: github.ref == 'refs/heads/stg' # Update values_stg.yaml on stg branch
+        run: |
+          chart_dir="chart"
+          new_image_tag=${{ github.sha }}
+          sed -i "s/^  tag: .*/  tag: $new_image_tag/" "$chart_dir/values_stg.yaml"
+
       - name: Commit the changes made
         run: | 
           git config --global user.name 'dgtvlz'

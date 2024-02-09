@@ -15,6 +15,8 @@ In the repo settings -> Actions -> General -> Workflow permissions -> Give it re
 
 argocd
 
+install argocd cli
+
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 kubectl get all -n argocd
@@ -23,3 +25,9 @@ minikube service argocd-server --url -n argocd
 
 get password
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+
+login into argo.
+create app
+copy argocd/hello-world.yaml
+create
+sync
