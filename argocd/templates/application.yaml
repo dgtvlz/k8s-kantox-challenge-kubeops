@@ -16,5 +16,9 @@ spec:
       - {{ .Values.valuesFile }}
   project: {{ .Values.projectName }}
   syncPolicy:
+    automated:
+      prune: {{ .Values.syncPolicy.automated.prune }}
+      allowEmpty: {{ .Values.syncPolicy.automated.allowEmpty }}
+      selfHeal: {{ .Values.syncPolicy.automated.selfHeal }}
     syncOptions:
       - CreateNamespace=true
