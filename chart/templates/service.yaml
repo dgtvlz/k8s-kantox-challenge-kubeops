@@ -9,8 +9,7 @@ spec:
   selector:
     app: hello-world
   ports:
-    - nodePort: 32208
-      port: 80
+    - port: 80
       protocol: TCP
       targetPort: 5000
   type: LoadBalancer
