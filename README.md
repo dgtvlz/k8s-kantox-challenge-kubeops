@@ -172,5 +172,13 @@ kubectl get all -n argocd
  ```
  Access the URL to validate the hello-world production service.
 
+21. **Try CI/CD**:
+
+ Make a change like updating the version of the Hello World prompt in the `src/hello-world/index.js` file.
+
+ Push this change in the `stg` branch and check if it automatically updates the staging environment in k8s.
+
+ Once its successfull, merge the `stg` branch with the `main` branch and check if it automatically updates the production environment in k8s.
+
 ## Future Improvements
 
