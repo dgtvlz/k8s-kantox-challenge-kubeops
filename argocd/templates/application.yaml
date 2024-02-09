@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  namespace: argocd
+  name: {{ .Values.appName }}
+spec:
+  destination:
+    name: 'in-cluster'
+    namespace: {{ .Values.namespace }}
+  source:
+    path: 'chart'
+    repoURL: {{ .Values.repoURL }}
+    targetRevision: {{ .Values.targetRevision }}
+    helm:
+      valueFiles:
+      - {{ .Values.valuesFile }}
+  project: {{ .Values.projectName }}
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true

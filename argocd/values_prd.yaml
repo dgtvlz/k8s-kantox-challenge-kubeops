@@ -1,0 +1,6 @@
+appName: hello-world-prd
+namespace: prd
+repoURL: https://github.com/dgtvlz/k8s-kantox-challenge-kubeops
+targetRevision: HEAD
+valuesFile: values_prd.yaml
+projectName: kantox-challenge-kubeops-prd

@@ -35,3 +35,14 @@ create prd app
 copy argocd/app_prd.yaml
 create
 sync
+
+
+programatically: 
+helm install argocd-app-stg -f values_stg.yaml .
+helm install argocd-app-prd -f values_prd.yaml .
+
+
+requirements
+    minikube v1.32.0
+        Kubernetes v1.28.3
+        Docker 24.0.7
