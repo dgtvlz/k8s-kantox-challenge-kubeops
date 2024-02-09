@@ -185,3 +185,16 @@ kubectl get all -n argocd
 
 ## Future Improvements
 
+* **Custom ArgoCD AppProjects Configuration**: Explore configuring ArgoCD AppProjects with custom settings tailored to specific needs.
+
+* **Migration to EKS**: Consider migrating from Minikube to Amazon EKS (Elastic Kubernetes Service) for a more scalable and production-grade Kubernetes environment.
+
+* **Optimize Docker Image Building**: Implement a strategy to build the Docker image only in the staging pipeline and reuse it in the production pipeline to improve efficiency and reduce redundancy.
+
+* **Fine-tune Pod Resources and Update Strategy**: Refine the configuration of pod resources (CPU and memory limits) and update strategy within the Helm chart values file to better align with application requirements and deployment strategies.
+
+* **Adoption of Ingress Controller**: Evaluate using an Ingress controller instead of a LoadBalancer Service, especially if there are plans to introduce additional services in the future. Ingress can offer more flexibility and advanced routing capabilities for managing incoming traffic.
+
+* **Use of Private Registry**: Explore the option of using a private Docker registry instead of relying solely on a public registry.
+
+* **Implement Monitoring and Logging Enhancements**: Introduce monitoring and logging solutions to gain better insights into the health, performance, and behavior of the Kubernetes cluster and deployed applications. Consider implementing tools such as Prometheus for monitoring metrics collection, Grafana for visualization, and ELK/Opensearch stack or similar for centralized logging.
