@@ -4,3 +4,8 @@ repoURL: https://github.com/dgtvlz/k8s-kantox-challenge-kubeops
 targetRevision: stg
 valuesFile: values_stg.yaml
 projectName: kantox-challenge-kubeops-stg
+syncPolicy:
+  automated:
+    prune: true
+    allowEmpty: false
+    selfHeal: true
