@@ -13,7 +13,7 @@ spec:
     helm:
       valueFiles:
       - values_stg.yaml
-  project: 'default'
+  project: 'kantox-challenge-kubeops'
   syncPolicy:
     syncOptions:
       - CreateNamespace=true

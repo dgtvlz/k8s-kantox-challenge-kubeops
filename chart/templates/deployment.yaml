@@ -24,7 +24,7 @@ spec:
       containers:
       - name: hello-world
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - name: liveness-port
           containerPort: 5000
@@ -42,6 +42,13 @@ spec:
           failureThreshold: 5
           periodSeconds: 10
           initialDelaySeconds: 60
+        resources:
+          requests:
+            cpu: 100m
+            memory: 128Mi
+          limits:
+            cpu: 200m
+            memory: 256Mi
       restartPolicy: Always
       terminationGracePeriodSeconds: 30
           
