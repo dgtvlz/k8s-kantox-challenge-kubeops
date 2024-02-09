@@ -1,5 +1,5 @@
 image:
   repository: dgtvlz/hello-world
-  tag: b3190884383dc032120ea3bdc82b16736d79ee37
+  tag: ac322ba6f6a29a113266913937213dc86b780fe9
 namespace: stg
 replicas: 2
