@@ -2,14 +2,14 @@
 
 ## Overview
 
-This project implements a Kubernetes cluster using Minikube, configured with ArgoCD to adopt a GitOps approach. The setup includes two ArgoCD applications: one for the staging (stg) environment and another for the production (prd) environment. These applications are configured as templates in the ArgoCD directory. 
+This project implements a Kubernetes cluster using Minikube, configured with ArgoCD to adopt a GitOps approach. The setup includes two ArgoCD applications: one for the staging (stg) environment and another for the production (prd) environment. These applications are configured as templates in the `argocd` directory. 
 
 - The stg application monitors changes in the `stg` branch in the GitHub repository.
 - The prd application monitors changes in the `main` branch in the GitHub repository.
 
 In the GitHub repository, there's a directory called `chart` where a Helm chart is configured as a template. Additionally, two different `values.yaml` files are provided, one for each environment.
 
-The Helm chart deploys a service of LoadBalancer type and a Deployment with a ReplicaSet. This Deployment consists of a Docker image, which is a simple "hello world" application written in Node.js.
+The Helm chart deploys a service of LoadBalancer type and a Deployment with a ReplicaSet. This Deployment consists of a Docker image, which is a simple "hello world" application written in Node.js. Application's code and Dockerfile can be found in `src/hello-world` directory
 
 ## Architecture
 
@@ -65,8 +65,6 @@ This workflow ensures that the Docker image is built and pushed to Docker Hub up
 
 ## Prerequisites
 
-To use this project, ensure that you have the following software versions installed:
-
 - **Minikube**: v1.32.0
   - Kubernetes: v1.28.3
   - Docker: 24.0.7
@@ -74,8 +72,6 @@ To use this project, ensure that you have the following software versions instal
 - Docker hub account
 
 ## Setup
-
-Follow these steps to set up and deploy the project:
 
 1. **Clone or Fork the Repository**:
 ```bash
@@ -117,7 +113,7 @@ kubectl get all -n argocd
   ```
   minikube service argocd-server --url -n argocd
   ```
-- Open a web browser and navigate to the provided URL. Log in using the admin username and password obtained from the secret.
+- Open a web browser and navigate to the provided URL. Log in using the `admin` username and password obtained from the secret.
 
 9. **Ensure Branches Exist**:
  Make sure both branches `stg` and `main` exist in your repository.
@@ -131,49 +127,50 @@ kubectl get all -n argocd
 12. **Trigger GitHub Actions Workflow**:
  Trigger the GitHub Actions workflow on both branches (`stg` and `main`).
 
-13. **Install Staging App**:
+13. **GitHub Actions Workflow Validation**:
+ Validate in Dockerhub that a new version of the Docker image was submitted.
+ Validate that the `chart/values_prd.yaml` and `chart/values_stg.yaml` files were updated by the pipeline with the new tag.
+
+14. **Install Staging App**:
  Inside the `argocd` directory, install the staging app:
  ```
  helm install argocd-app-stg -f values_stg.yaml .
  ```
 
-14. **Install Production App**:
+15. **Install Production App**:
  Also inside the `argocd` directory, install the production app:
  ```
  helm install argocd-app-prd -f values_prd.yaml .
  ```
 
-15. **Review ArgoCD Dashboard**:
+16. **Review ArgoCD Dashboard**:
  Once the applications are installed, review the ArgoCD dashboard to ensure the applications are created successfully.
 
-16. **Validate Staging Environment Deployment**:
+17. **Validate Staging Environment Deployment**:
  Execute the following command to validate the staging environment deployment:
  ```
  kubectl get all -n stg
  ```
 
-17. **Validate Production Environment Deployment**:
+18. **Validate Production Environment Deployment**:
  Execute the following command to validate the production environment deployment:
  ```
  kubectl get all -n prd
  ```
 
-18. **Validate Staging Service**:
+19. **Validate Staging Service**:
  Once all the staging components are running, run the following command to get the URL of the hello-world staging service:
  ```
  minikube service hello-world --url -n stg
  ```
  Access the URL to validate the hello-world staging service.
 
-19. **Validate Production Service**:
+20. **Validate Production Service**:
  Once all the production components are running, run the following command to get the URL of the hello-world production service:
  ```
  minikube service hello-world --url -n prd
  ```
  Access the URL to validate the hello-world production service.
-
-## Usage
-
 
 ## Future Improvements
 
