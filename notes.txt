@@ -46,3 +46,4 @@ requirements
     minikube v1.32.0
         Kubernetes v1.28.3
         Docker 24.0.7
+    helm v3.14.0
